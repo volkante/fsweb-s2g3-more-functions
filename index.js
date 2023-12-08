@@ -16,9 +16,12 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(path) {
+  const pathParted = path.split("/");
+  let fileName = pathParted[pathParted.length - 1];
+  return fileName;
 }
+//console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
 
 /*
   GÖREV 2
@@ -38,9 +41,16 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(numberArr) {
+  if (numberArr.length == 0) {
+    return null;
+  } else {
+    let reducedNumber = numberArr.reduce((total, item) => total + item, 0);
+    return reducedNumber / numberArr.length;
+  }
 }
+
+//console.log(ortalamaBul([]));
 
 /*
   GÖREV 3
@@ -62,9 +72,33 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+// const numbers = [50, -26, 153, 7];
+
+// function ortalamadanBuyukleriBul(arr, cb) {
+//   let average = cb(arr);
+//   let moreOrEqualToAverage = arr.filter((item) => {
+//     return item>=average})
+//   return moreOrEqualToAverage;
+// }
+
+// console.log(ortalamadanBuyukleriBul(numbers,ortalamaBul))
+
+const numbers = [50, -26, 153, 7];
+
+function ortalamadanBuyukleriBul(arr, cb) {
+  let average = cb(arr);
+  let greaterOrEqualAvgNumbers;
+  if (average !== null) {
+    greaterOrEqualAvgNumbers = arr.filter((item) => {
+      return item >= average;
+    });
+  } else {
+    greaterOrEqualAvgNumbers = null;
+  }
+  return greaterOrEqualAvgNumbers;
 }
+
+console.log(ortalamadanBuyukleriBul(numbers, ortalamaBul));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
